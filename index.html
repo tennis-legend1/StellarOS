@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellarOS - Your Web Desktop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="desktop">
+        <!-- Icons -->
+        <div class="icon" draggable="true" data-app="terminal">
+            <div class="icon-img">�️</ div>
+            <div class="icon-label">Terminal</div>
+        </div>
+        <div class="icon" draggable="true" data-app="notes">
+            <div class="icon-img">�</ div>
+            <div class="icon-label">Notes</div>
+        </div>
+        <div class="icon" draggable="true" data-app="calculator">
+            <div class="icon-img">�</ div>
+            <div class="icon-label">Calculator</div>
+        </div>
+        <div class="icon" draggable="true" data-app="browser">
+            <div class="icon-img">�</ div>
+            <div class="icon-label">Browser</div>
+        </div>
+
+        <!-- Taskbar -->
+        <div id="taskbar">
+            <div class="taskbar-left">
+                <div class="start-button" id="startButton">⭐ Start</div>
+            </div>
+            <div class="taskbar-center" id="windowList"></div>
+            <div class="taskbar-right">
+                <div class="clock" id="clock">� 12:00:00</ div>
+                <div class="theme-toggle" id="themeToggle">�</ div>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div id="startMenu" class="hidden">
+            <div class="start-menu-header">
+                <h2>StellarOS</h2>
+                <div class="user-info">Welcome, Explorer!</div>
+            </div>
+            <div class="start-menu-apps">
+                <div class="start-app" data-app="terminal">�️ Terminal</ div>
+                <div class="start-app" data-app="notes">� Notes</ div>
+                <div class="start-app" data-app="calculator">� Calculator</ div>
+                <div class="start-app" data-app="browser">� Browser</ div>
+                <div class="start-app" data-app="settings">⚙️ Settings</div>
+            </div>
+        </div>
+
+        <div id="windows"></div>
+    </div>
+
+    <div id="app-templates" class="hidden">
+        <!-- Terminal -->
+        <div class="window" id="terminal-template">
+            <div class="window-header">
+                <span class="window-title">Terminal</span>
+                <div class="window-controls">
+                    <button class="minimize">—</button>
+                    <button class="maximize">□</button>
+                    <button class="close">✕</button>
+                </div>
+            </div>
+            <div class="window-content terminal">
+                <div class="terminal-output" id="terminal-output"></div>
+                <div class="terminal-input">
+                    <span>>></span>
+                    <input type="text" id="terminal-input" autofocus>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="window" id="notes-template">
+            <div class="window-header">
+                <span class="window-title">Notes</span>
+                <div class="window-controls">
+                    <button class="minimize">—</button>
+                    <button class="maximize">□</button>
+                    <button class="close">✕</button>
+                </div>
+            </div>
+            <div class="window-content notes">
+                <textarea id="notes-textarea" placeholder="Write your thoughts here...✨"></textarea>
+            </div>
+        </div>
+
+        <!-- Calculator -->
+        <div class="window" id="calculator-template">
+            <div class="window-header">
+                <span class="window-title">Calculator</span>
+                <div class="window-controls">
+                    <button class="minimize">—</button>
+                    <button class="maximize">□</button>
+                    <button class="close">✕</button>
+                </div>
+            </div>
+            <div class="window-content calculator">
+                <div class="calculator-display" id="calculator-display">0</div>
+                <div class="calculator-buttons">
+                    <button class="calc-btn" data-value="7">7</button>
+                    <button class="calc-btn" data-value="8">8</button>
+                    <button class="calc-btn" data-value="9">9</button>
+                    <button class="calc-btn operator" data-value="/">÷</button>
+                    <button class="calc-btn" data-value="4">4</button>
+                    <button class="calc-btn" data-value="5">5</button>
+                    <button class="calc-btn" data-value="6">6</button>
+                    <button class="calc-btn operator" data-value="*">×</button>
+                    <button class="calc-btn" data-value="1">1</button>
+                    <button class="calc-btn" data-value="2">2</button>
+                    <button class="calc-btn" data-value="3">3</button>
+                    <button class="calc-btn operator" data-value="-">−</button>
+                    <button class="calc-btn" data-value="0">0</button>
+                    <button class="calc-btn" data-value=".">.</button>
+                    <button class="calc-btn equals" data-value="=">=</button>
+                    <button class="calc-btn operator" data-value="+">+</button>
+                    <button class="calc-btn clear" data-value="C">C</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browser -->
+        <div class="window" id="browser-template">
+            <div class="window-header">
+                <span class="window-title">Stellar Browser</span>
+                <div class="window-controls">
+                    <button class="minimize">—</button>
+                    <button class="maximize">□</button>
+                    <button class="close">✕</button>
+                </div>
+            </div>
+            <div class="window-content browser">
+                <div class="browser-nav">
+                    <input type="text" id="browser-url" placeholder="https://example.com">
+                    <button id="browser-go">→</button>
+                </div>
+                <div class="browser-content">
+                    <iframe id="browser-iframe" src="about:blank"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="window" id="settings-template">
+            <div class="window-header">
+                <span class="window-title">Settings</span>
+                <div class="window-controls">
+                    <button class="minimize">—</button>
+                    <button class="maximize">□</button>
+                    <button class="close">✕</button>
+                </div>
+            </div>
+            <div class="window-content settings">
+                <h3>� Appearance</ h3>
+                <div class="settings-option">
+                    <label>Theme</label>
+                    <select id="theme-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="starry">Starry Night</option>
+                        <option value="sunset">Sunset</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/windows.js"></script>
+    <script src="js/apps.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
