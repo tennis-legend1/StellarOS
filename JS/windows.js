@@ -211,18 +211,86 @@ class WindowManager {
         const urlInput = window.querySelector('#browser-url');
         const goButton = window.querySelector('#browser-go');
         const iframe = window.querySelector('#browser-iframe');
+
+        iframe.src = "https://www.wikipedia.org";
+        urlInput.value = "wikipedia.org";
+
         goButton.addEventListener('click', () => {
             let url = urlInput.value.trim();
-            if (url) {
-                if (!url.startsWith('http://') && !url.startsWith('https://')) url = 'https://' + url;
+            if (!url) return;
+
+            if (url.includes('.') && !url.includes(' ')) {
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'https://' + url;
+                }
                 iframe.src = url;
+            } else {
+                const searchUrl = `https://crossref.org{encodeURIComponent(url)}&rows=10`;
+                
+                fetch(searchUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const items = data.message.items || [];
+                        
+                        let htmlContent = `
+                            <html lang="en">
+                            <head>
+                                <style>
+                                    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 20px; background: #0f111a; color: #ffffff; }
+                                    .search-header { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 20px; font-size: 14px; color: #8b9bb4; }
+                                    .result-item { margin-bottom: 24px; }
+                                    .result-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+                                    .result-title a { color: #00d4ff; text-decoration: none; }
+                                    .result-title a:hover { text-decoration: underline; }
+                                    .result-url { color: #00ffa3; font-size: 12px; margin-bottom: 6px; word-break: break-all; }
+                                    .result-snippet { color: #b4c6ef; font-size: 14px; line-height: 1.5; }
+                                </style>
+                            </head>
+                            <body>
+                                <div class="search-header">Global Search Results for: <b>${url}</b></div>
+                        `;
+
+                        if (items.length === 0) {
+                            htmlContent += `<p style="color: #8b9bb4;">No web results found in this sector.</p>`;
+                        } else {
+                            items.forEach(item => {
+                                const title = item.title ? item.title[0] : 'Web Directory Link';
+                                const link = item.URL || 'https://google.com';
+                                const snippet = item.publisher || 'Global indexed network database content.';
+                                htmlContent += `
+                                    <div class="result-item">
+                                        <div class="result-title"><a href="${link}" target="_blank">${title}</a></div>
+                                        <div class="result-url">${link}</div>
+                                        <div class="result-snippet">${snippet}</div>
+                                    </div>
+                                `;
+                            });
+                        }
+
+                        htmlContent += `</body></html>`;
+                        
+                        iframe.src = "about:blank";
+                        setTimeout(() => {
+                            const doc = iframe.contentDocument || iframe.contentWindow.document;
+                            doc.open();
+                            doc.write(htmlContent);
+                            doc.close();
+                        }, 10);
+                    })
+                    .catch(() => {
+                        iframe.src = "https://www.wikipedia.org/wiki/" + encodeURIComponent(url);
+                    });
             }
         });
-        urlInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') goButton.click(); });
+
+        urlInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                goButton.click();
+            }
+        });
     }
 
-    getWindowById(windowId) { return this.windows.find(w => w.id === windowId); }
-    getActiveWindow() { return this.activeWindow; }
+
 }
 
 const windowManager = new WindowManager();

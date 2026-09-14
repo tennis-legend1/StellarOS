@@ -65,17 +65,55 @@ html, body {
     height: 100vh; width: 100vw; position: relative;
     padding: 20px; padding-bottom: 50px;
 }
-
 /* ICONS */
 .icon {
-    width: 80px; height: 80px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; cursor: pointer;
-    user-select: none; margin: 10px; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: absolute !important;
 }
-.icon:hover { transform: scale(1.1); box-shadow: var(--shadow); }
-.icon:active { transform: scale(0.95); }
-.icon-img { font-size: 40px; margin-bottom: 5px; }
-.icon-label { font-size: 12px; text-align: center; color: var(--icon-color); text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+.icon:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow);
+}
+.icon:active {
+    transform: scale(0.95);
+}
+.icon-img {
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+.icon-label {
+    font-size: 12px;
+    text-align: center;
+    color: var(--icon-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Individual Icon Coordinates */
+#icon-terminal {
+    top: 25px;
+    left: 25px;
+}
+#icon-notes {
+    top: 25px;
+    right: 25px;
+}
+#icon-calculator {
+    bottom: 75px;
+    left: 25px;
+}
+#icon-browser {
+    bottom: 75px;
+    right: 25px;
+}
+
 
 /* TASKBAR */
 #taskbar {
