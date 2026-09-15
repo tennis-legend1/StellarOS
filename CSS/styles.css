@@ -1,55 +1,55 @@
 /* THEMES */
 :root {
     --bg-color: #1a1a2e;
-    --desktop-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --desktop-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     --text-color: #eaeaea;
     --accent-color: #00d4ff;
-    --window-bg: rgba(255, 255, 255, 0.1);
-    --window-border: rgba(255, 255, 255, 0.2);
-    --taskbar-bg: rgba(0, 0, 0, 0.8);
+    --window-bg: #1f1f38;
+    --window-border: rgba(255, 255, 255, 0.15);
+    --taskbar-bg: #0b0b1a;
     --icon-color: #fff;
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --font-main: 'Rajdhani', sans-serif;
-    --font-title: 'Orbitron', sans-serif;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --font-main: 'Segoe UI', Tahoma, sans-serif;
+    --font-title: 'Segoe UI', Tahoma, sans-serif;
 }
 
 /* Light Theme */
 [data-theme="light"] {
     --bg-color: #f5f7fa;
-    --desktop-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%;);
+    --desktop-bg: #c3cfe2;
     --text-color: #333;
     --accent-color: #4a6bff;
-    --window-bg: rgba(255, 255, 255, 0.9);
+    --window-bg: #ffffff;
     --window-border: rgba(0, 0, 0, 0.1);
-    --taskbar-bg: rgba(240, 240, 240, 0.9);
+    --taskbar-bg: #e0e0e0;
     --icon-color: #333;
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Starry Night Theme */
 [data-theme="starry"] {
     --bg-color: #0a0a1a;
-    --desktop-bg: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+    --desktop-bg: #0a0a1a;
     --text-color: #f0f0f0;
     --accent-color: #ff00aa;
-    --window-bg: rgba(20, 20, 40, 0.8);
+    --window-bg: #141428;
     --window-border: rgba(100, 100, 200, 0.3);
-    --taskbar-bg: rgba(10, 10, 30, 0.9);
+    --taskbar-bg: #0a0a1e;
     --icon-color: #fff;
-    --shadow: 0 0 30px rgba(100, 100, 255, 0.3);
+    --shadow: 0 0 20px rgba(100, 100, 255, 0.2);
 }
 
 /* Sunset Theme */
 [data-theme="sunset"] {
     --bg-color: #2c1810;
-    --desktop-bg: linear-gradient(135deg, #2c1810 0%, #8b4513 50%, #ff8c00 100%);
+    --desktop-bg: #8b4513;
     --text-color: #fff;
     --accent-color: #ff6b35;
-    --window-bg: rgba(40, 24, 16, 0.8);
+    --window-bg: #3d2419;
     --window-border: rgba(255, 107, 53, 0.3);
-    --taskbar-bg: rgba(44, 24, 16, 0.9);
+    --taskbar-bg: #2c1810;
     --icon-color: #fff;
-    --shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+    --shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
 }
 
 /* BASE STYLES */
@@ -67,59 +67,25 @@ html, body {
 }
 /* ICONS */
 .icon {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: absolute !important;
+    width: 80px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; user-select: none; transition: transform 0.2s ease, box-shadow 0.2s ease; position: absolute !important;
 }
-.icon:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow);
-}
-.icon:active {
-    transform: scale(0.95);
-}
-.icon-img {
-    font-size: 40px;
-    margin-bottom: 5px;
-}
-.icon-label {
-    font-size: 12px;
-    text-align: center;
-    color: var(--icon-color);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
+.icon:hover { transform: scale(1.1); box-shadow: var(--shadow); }
+.icon:active { transform: scale(0.95); }
+.icon-img { font-size: 40px; margin-bottom: 5px; }
+.icon-label { font-size: 12px; text-align: center; color: var(--icon-color); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
 
 /* Individual Icon Coordinates */
-#icon-terminal {
-    top: 25px;
-    left: 25px;
-}
-#icon-notes {
-    top: 25px;
-    right: 25px;
-}
-#icon-calculator {
-    bottom: 75px;
-    left: 25px;
-}
-#icon-browser {
-    bottom: 75px;
-    right: 25px;
-}
+#icon-terminal { top: 25px; left: 25px; }
+#icon-notes { top: 25px; right: 25px; }
+#icon-calculator { bottom: 75px; left: 25px; }
+#icon-browser { bottom: 75px; right: 25px; }
 
 
 /* TASKBAR */
 #taskbar {
     position: fixed; bottom: 0; left: 0; right: 0; height: 45px;
-    background: var(--taskbar-bg); backdrop-filter: blur(10px);
-    display: flex; align-items: center; justify-content: space-between;
+    background: var(--taskbar-bg); display: flex; align-items: center; justify-content: space-between;
     padding: 0 15px; border-top: 1px solid rgba(255,255,255,0.1); z-index: 1000;
 }
 .taskbar-left, .taskbar-right { display: flex; align-items: center; gap: 15px; }
@@ -130,7 +96,7 @@ html, body {
     border: none; border-radius: 5px; cursor: pointer;
     font-family: var(--font-main); font-weight: 600; transition: all 0.2s ease;
 }
-.start-button:hover { background: color-mix(in srgb, var(--accent-color), black 20%); transform: scale(1.05); }
+.start-button:hover { background: #00b0d4; transform: scale(1.05); }
 
 .clock { font-family: var(--font-title); font-size: 14px; color: var(--accent-color); }
 .theme-toggle { font-size: 20px; cursor: pointer; transition: transform 0.2s ease; }
@@ -139,8 +105,7 @@ html, body {
 /* START MENU */
 #startMenu {
     position: absolute; bottom: 50px; left: 15px; width: 250px;
-    background: var(--window-bg); backdrop-filter: blur(10px);
-    border: 1px solid var(--window-border); border-radius: 10px;
+    background: var(--window-bg); border: 1px solid var(--window-border); border-radius: 10px;
     box-shadow: var(--shadow); z-index: 1001; animation: fadeIn 0.2s ease;
 }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -149,19 +114,18 @@ html, body {
 .user-info { font-size: 12px; color: var(--text-color); opacity: 0.8; }
 .start-menu-apps { padding: 10px; }
 .start-app { padding: 10px 15px; margin: 5px 0; cursor: pointer; border-radius: 5px; transition: all 0.2s ease; font-size: 14px; }
-.start-app:hover { background: color-mix(in srgb, var(--accent-color), transparent 80%); transform: translateX(5px); }
+.start-app:hover { background: rgba(0, 212, 255, 0.2); transform: translateX(5px); }
 
 /* WINDOWS */
 .window {
     position: absolute; min-width: 300px; min-height: 200px;
-    background: var(--window-bg); backdrop-filter: blur(10px);
-    border: 1px solid var(--window-border); border-radius: 8px;
+    background: var(--window-bg); border: 1px solid var(--window-border); border-radius: 8px;
     box-shadow: var(--shadow); z-index: 100; animation: openWindow 0.2s ease;
     resize: both; overflow: hidden;
 }
 @keyframes openWindow { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 .window-header {
-    height: 35px; background: color-mix(in srgb, var(--window-bg), black 10%);
+    height: 35px; background: rgba(0, 0, 0, 0.2);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 10px; border-bottom: 1px solid var(--window-border);
     cursor: move; user-select: none;
@@ -173,12 +137,12 @@ html, body {
     color: var(--text-color); cursor: pointer; border-radius: 3px;
     transition: all 0.2s ease; font-size: 14px;
 }
-.window-controls button:hover { background: color-mix(in srgb, var(--accent-color), transparent 80%); }
+.window-controls button:hover { background: rgba(255, 255, 255, 0.1); }
 .window-controls .close:hover { background: #ff4444 !important; color: white; }
 .window-content { height: calc(100% - 35px); padding: 15px; overflow: auto; }
 
 /* TERMINAL */
-.window-content.terminal { font-family: 'Courier New', monospace; background: color-mix(in srgb, black, transparent 80%); padding: 10px; }
+.window-content.terminal { font-family: 'Courier New', monospace; background: rgba(0, 0, 0, 0.5); padding: 10px; }
 .terminal-output { height: calc(100% - 40px); overflow-y: auto; margin-bottom: 10px; color: #00ff88; font-size: 14px; white-space: pre-wrap; }
 .terminal-input { display: flex; align-items: center; gap: 10px; }
 .terminal-input span { color: var(--accent-color); }
@@ -188,7 +152,7 @@ html, body {
 /* NOTES */
 .window-content.notes { display: flex; flex-direction: column; }
 #notes-textarea {
-    flex: 1; background: color-mix(in srgb, var(--window-bg), black 5%);
+    flex: 1; background: rgba(0, 0, 0, 0.15);
     border: 1px solid var(--window-border); border-radius: 5px; padding: 10px;
     font-family: var(--font-main); font-size: 14px; color: var(--text-color);
     resize: none; outline: none;
@@ -198,7 +162,7 @@ html, body {
 /* CALCULATOR */
 .window-content.calculator { display: flex; flex-direction: column; gap: 15px; }
 .calculator-display {
-    height: 50px; background: color-mix(in srgb, black, transparent 50%);
+    height: 50px; background: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--window-border); border-radius: 5px;
     display: flex; align-items: center; justify-content: flex-end;
     padding: 0 15px; font-family: var(--font-title); font-size: 24px; color: var(--accent-color);
@@ -206,15 +170,14 @@ html, body {
 }
 .calculator-buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .calc-btn {
-    height: 45px; background: color-mix(in srgb, var(--window-bg), black 10%);
-    border: 1px solid var(--window-border); border-radius: 5px;
+    height: 45px; background: rgba(0, 0, 0, 0.15); border: 1px solid var(--window-border); border-radius: 5px;
     color: var(--text-color); font-family: var(--font-title); font-size: 18px;
     cursor: pointer; transition: all 0.2s ease;
 }
-.calc-btn:hover { background: color-mix(in srgb, var(--accent-color), transparent 80%); }
+.calc-btn:hover { background: rgba(255, 255, 255, 0.1); }
 .calc-btn.operator { color: var(--accent-color); }
 .calc-btn.equals { background: var(--accent-color); color: white; }
-.calc-btn.equals:hover { background: color-mix(in srgb, var(--accent-color), black 20%); }
+.calc-btn.equals:hover { background: #00b0d4; }
 .calc-btn.clear { background: #ff4444; color: white; }
 .calc-btn.clear:hover { background: #cc0000; }
 
@@ -222,7 +185,7 @@ html, body {
 .window-content.browser { display: flex; flex-direction: column; height: 100%; }
 .browser-nav { display: flex; gap: 10px; margin-bottom: 10px; }
 #browser-url {
-    flex: 1; padding: 8px 12px; background: color-mix(in srgb, var(--window-bg), black 5%);
+    flex: 1; padding: 8px 12px; background: rgba(0, 0, 0, 0.1);
     border: 1px solid var(--window-border); border-radius: 5px;
     color: var(--text-color); font-family: var(--font-main); font-size: 14px; outline: none;
 }
@@ -232,7 +195,7 @@ html, body {
     border: none; border-radius: 5px; cursor: pointer; font-family: var(--font-title);
     transition: all 0.2s ease;
 }
-#browser-go:hover { background: color-mix(in srgb, var(--accent-color), black 20%); }
+#browser-go:hover { background: #00b0d4; }
 .browser-content { flex: 1; border: 1px solid var(--window-border); border-radius: 5px; overflow: hidden; }
 .browser-content iframe { width: 100%; height: 100%; border: none; }
 
@@ -244,15 +207,24 @@ html, body {
 }
 .settings-option label { font-family: var(--font-main); font-size: 14px; }
 .settings-option select, .settings-option input[type="checkbox"] {
-    background: color-mix(in srgb, var(--window-bg), black 5%);
-    border: 1px solid var(--window-border); border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1); border: 1px solid var(--window-border); border-radius: 5px;
     color: var(--text-color); font-family: var(--font-main); padding: 8px;
 }
+
+.settings-option select, 
+.settings-option input[type="checkbox"] {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--window-border);
+    border-radius: 4px;
+    color: var(--text-color);
+    padding: 6px;
+}
+
 .settings-option input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
 
 /* WINDOW TABS */
 .window-tab {
-    padding: 5px 10px; background: color-mix(in srgb, var(--accent-color), transparent 80%);
+    padding: 5px 10px; background: rgba(0, 212, 255, 0.15);
     border-radius: 5px; cursor: pointer; font-size: 12px; transition: all 0.2s ease;
 }
 .window-tab:hover { background: var(--accent-color); color: white; }
@@ -269,14 +241,3 @@ html, body {
     #startMenu { width: 200px; }
 }
 
-/* STARRY BACKGROUND */
-[data-theme="starry"] #desktop::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background:
-        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent);
-    background-size: 200px 100px; animation: twinkle 5s linear infinite;
-    pointer-events: none; z-index: -1;
-}
-@keyframes twinkle { from { background-position: 0 0; } to { background-position: 200px 100px; } }
