@@ -1,19 +1,14 @@
 # StellarOS - Web‑Based Desktop Environment
 
-StellarOS is a fully interactive web desktop built with HTML, CSS and JavaScript. It includes draggable windows, a start menu, a taskbar, multiple built‑in apps and a full theme system. Everything runs client‑side, so it loads instantly in any modern browser.
+StellarOS is a fully interactive web desktop built with HTML, CSS and JavaScript. It includes draggable windows, a start menu, a taskbar and multiple built‑in apps. Everything runs client‑side, so it loads instantly in any modern browser.
 
 ## Features
 StellarOS includes a full set of desktop‑style tools and interactions:
 
 - Multiple draggable and resizable windows
-- Terminal, Notes, Calculator, Browser and Settings apps
+- Terminal, Notes, Calculator and Browser apps
 - Start menu with quick app launch
-- Right‑click desktop menu
 - Live clock in the taskbar
-- Four themes: Light, Dark, Starry Night and Sunset
-- Keyboard shortcuts (Ctrl+T/N/C/B/S)
-- Konami code easter egg
-- Local storage for theme saving
 - No login or password required
 
 ## How to Use
